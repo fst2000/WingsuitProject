@@ -9,6 +9,6 @@ public class WingsuitController : MonoBehaviour
     [SerializeField] new Rigidbody rigidbody = new Rigidbody();
     private void Update()
     {
-        Wing wing = new Wing(-Vector3.forward,Vector3.zero);
+        Wing wing = new Wing(-Vector3.forward,Vector3.zero, 1.8f, 1.5f);
     }
 }
