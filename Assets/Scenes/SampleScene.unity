@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd1ba0b1ef7a28946bbdcd8128a505f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1013.3
+      value: 1209
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd1ba0b1ef7a28946bbdcd8128a505f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -67.91
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd1ba0b1ef7a28946bbdcd8128a505f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -352,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: 1.7474012e-14, z: -2.4011266e-15, w: 1}
-  m_LocalPosition: {x: -10.689998, y: 1012.89996, z: -78.39}
+  m_LocalPosition: {x: -10.689998, y: 1209.4, z: 23.869003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -485,7 +485,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1474272152
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -533,9 +533,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1474272153}
+  pivotPosition: {fileID: 1474272155}
   rigidbody: {fileID: 1474272149}
-  forwardForce: 0
+  dragIntensity: 0.8
   torqueSpeed: 5
+--- !u!4 &1474272155 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd1ba0b1ef7a28946bbdcd8128a505f9, type: 3}
+  m_PrefabInstance: {fileID: 31492800}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2022994668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 21e0551bba55583428dc5438ddf40699, type: 3}
