@@ -8,14 +8,31 @@ public class WingsuitController : MonoBehaviour
     [SerializeField] Transform pivotPosition;
     [SerializeField] new Rigidbody rigidbody = new Rigidbody();
     [SerializeField] float torqueSpeed = 3f;
-    [SerializeField] float upForce = 10f;
+    [SerializeField] float dragForce = 10f;
     PlayerInput playerInput = new PlayerInput();
+
+    Wing wingForward;
+    Wing wingBackward;
+    Wing wingStabilize;
+    Wing[] wings;
+    private void Start()
+    {
+        wingForward = new Wing(-Vector3.forward, new Vector3(0, 1, 0), 1f, 1.5f);
+        wingBackward = new Wing(-Vector3.forward, new Vector3(0, -1, 0), 1f, 1.5f);
+        wingStabilize = new Wing(Vector3.forward, new Vector3(0, -1, 0), 0.5f, 1f);
+        wings = new Wing[] { wingForward, wingBackward, wingStabilize };
+    }
     private void Update()
     {
         animator.SetBool("isFlying", true);
-        Wing wing = new Wing(-Vector3.forward,Vector3.zero, 1.8f, 1.5f);
-        Vector3 globalNormal = transform.TransformDirection(wing.GetLocalNormal());
-        rigidbody.AddRelativeTorque(playerInput.moveVertical * torqueSpeed, -playerInput.moveHorizontal * torqueSpeed, 0);
-        rigidbody.AddForce(globalNormal * Vector3.Dot(globalNormal, -rigidbody.velocity) * wing.GetSquare() * upForce) ;
+
+        wingBackward.Rotate(new Vector3(playerInput.moveVertical * 10, 0, 0));
+        foreach (Wing wing in wings)
+        {
+            Vector3 globalNormal = transform.TransformDirection(wing.GetLocalNormal());
+            Vector3 wingGlobalPosition = transform.TransformPoint(wing.GetLocalPosition());
+            Vector3 globalVelocity = rigidbody.GetPointVelocity(wingGlobalPosition);
+            rigidbody.AddForceAtPosition(globalNormal * Vector3.Dot(globalNormal, -globalVelocity) * wing.GetSquare() * dragForce, wingGlobalPosition);
+        }
     }
 }

@@ -26,4 +26,8 @@ public class Wing
     {
         return localNormal;
     }
+    public void Rotate(Vector3 euler)
+    {
+        localNormal = Quaternion.Euler(euler) * Vector3.up;
+    }
 }
