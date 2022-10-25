@@ -7,7 +7,8 @@ public class Wing
     Vector3 localNormal = Vector3.up;
     Vector3 localPosition = Vector3.zero;
     float sizeX, sizeY;
-   public Wing(Vector3 localNormal, Vector3 localPosition, float sizeX, float sizeY)
+    Quaternion rotation; 
+    public Wing(Vector3 localNormal, Vector3 localPosition, float sizeX, float sizeY)
     {
         this.localNormal = localNormal;
         this.localPosition = localPosition;
@@ -24,10 +25,15 @@ public class Wing
     }
     public Vector3 GetLocalNormal()
     {
-        return localNormal;
+        return rotation * localNormal;
     }
-    public void Rotate(Vector3 euler)
+    public Vector3 GetSize()
     {
-        localNormal = Quaternion.Euler(euler) * Vector3.up;
+        return new Vector3(sizeX, sizeY,0);
     }
+    public void UpdateRotation(Vector3 euler)
+    {
+        rotation = Quaternion.Euler(euler);
+    }
+    
 }
