@@ -515,12 +515,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2141349667}
   pivotPosition: {fileID: 2141349668}
-  backWingRotationAngle: 30
-  forwardWingRotationAngle: 10
-  dragForce: 20
+  backWingRotationAngle: 20
+  forwardWingRotationAngle: 5
+  dragForce: 0.2
   angularDrag: 2
   boneRotateIntencity: 5
-  boneRotateSpeed: 1
+  boneRotateSpeed: 0.1
   boneArmL: {fileID: 981224440}
   boneArmR: {fileID: 246770055}
   boneHipL: {fileID: 160846459}
