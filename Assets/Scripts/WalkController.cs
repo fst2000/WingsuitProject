@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class WalkController : MonoBehaviour
 {
     [SerializeField]  Animator animator = new Animator();

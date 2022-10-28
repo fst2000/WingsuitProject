@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class PlayerInput
 {
-    public float moveVertical
+    public float MoveVertical
     {
         get
         {
             return Input.GetAxis("Vertical");
         }
     }
-    public float moveHorizontal
+    public float MoveHorizontal
     {
         get
         {
             return Input.GetAxis("Horizontal");
         }
     }
-    public float mouseX
+    public float MouseX
     {
         get
         {
             return Input.GetAxis("MouseX");
         }
     }
-    public float mouseY
+    public float MouseY
     {
         get
         {
