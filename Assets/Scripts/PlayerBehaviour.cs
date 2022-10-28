@@ -4,7 +4,7 @@ using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class WingsuitController : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Transform pivotPosition;
@@ -42,11 +42,18 @@ public class WingsuitController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.TransformPoint(wingLeft.GetLocalPosition()), transform.TransformPoint(wingLeft.GetLocalPosition() + wingLeft.GetLocalNormal()));
-        Gizmos.DrawLine(transform.TransformPoint(wingRight.GetLocalPosition()), transform.TransformPoint(wingRight.GetLocalPosition() + wingRight.GetLocalNormal()));
-        Gizmos.DrawLine(transform.TransformPoint(wingBack.GetLocalPosition()), transform.TransformPoint(wingBack.GetLocalPosition() + wingBack.GetLocalNormal()));
-        Gizmos.DrawLine(transform.TransformPoint(wingStabilize.GetLocalPosition()), transform.TransformPoint(wingStabilize.GetLocalPosition() + wingStabilize.GetLocalNormal()));
+        if (wings == null) return;
+
+        foreach (Wing wing in wings)
+        {
+            Matrix4x4 matrixRotation = Matrix4x4.Rotate(transform.rotation * wing.GetWingRotation());
+            Matrix4x4 matrixPosition = Matrix4x4.Translate(transform.TransformPoint(wing.GetLocalPosition()));
+            Gizmos.matrix = matrixPosition * matrixRotation;
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(Vector3.zero,Vector3.forward);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(Vector3.zero, wing.GetSize());
+        }
 
     }
     private void Update()

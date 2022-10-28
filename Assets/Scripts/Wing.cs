@@ -35,5 +35,10 @@ public class Wing
     {
         rotation = Quaternion.Euler(euler);
     }
+
+    public Quaternion GetWingRotation() 
+    {
+        return rotation;
+    }
     
 }

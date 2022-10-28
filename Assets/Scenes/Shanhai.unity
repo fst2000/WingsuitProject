@@ -272,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608661440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: -11, y: 963, z: 407.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -517,6 +517,7 @@ MonoBehaviour:
   pivotPosition: {fileID: 2141349668}
   backWingRotationAngle: 20
   forwardWingRotationAngle: 5
+  stabilizeWingRotationAngle: 5
   dragForce: 0.2
   angularDrag: 2
   boneRotateIntencity: 5
